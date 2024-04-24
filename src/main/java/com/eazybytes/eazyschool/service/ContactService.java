@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -34,16 +35,24 @@ public class ContactService {
         return isSaved;
     }
 
-    public List<Contact> findMessagesWithOpenStatus() {
+    /*public List<Contact> findMessagesWithOpenStatus() {
         return repository.findMessagesWithOpenStatus(EazySchoolConstants.OPEN);
-    }
+    }*/
 
     public boolean closeMessageById(int id) {
 
         boolean isUpdated=false;
-       int result = repository.closeMessageById(id,EazySchoolConstants.CLOSED);
-       if(result>0)
+       Optional<Contact> contact =repository.findById(id);
+       if(contact.isPresent())
        {
+           contact.get().setStatus(EazySchoolConstants.CLOSED);
+           contact.get().setUpdatedBy("Prabh");
+           contact.get().setUpdatedAt(LocalDateTime.now());
+       }
+       Contact updatedContact = repository.save(contact.get());
+       if(null!=updatedContact && updatedContact.getCreatedBy()!=null)
+       {
+
            isUpdated=true;
        }
        return isUpdated;

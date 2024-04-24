@@ -53,14 +53,14 @@ public class ContactController {
         return "redirect:/contact";
     }
 
-    @GetMapping("/displayMessages")
-    public ModelAndView displayMessages()
+   // @GetMapping("/displayMessages")
+    /*public ModelAndView displayMessages()
     {
      List<Contact> contactMsgs = contactService.findMessagesWithOpenStatus();
      ModelAndView model = new ModelAndView("messages.html");
      model.addObject("contactMsgs",contactMsgs);
      return model;
-    }
+    }*/
 
     @GetMapping("/closeMsg")
     public String closeStatus(@RequestParam int id)
