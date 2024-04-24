@@ -1,9 +1,8 @@
 package com.eazybytes.eazyschool.repository;
 
-import com.eazybytes.eazyschool.ContactRowMapper;
+import com.eazybytes.eazyschool.rowmappers.ContactRowMapper;
 import com.eazybytes.eazyschool.model.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.stereotype.Repository;

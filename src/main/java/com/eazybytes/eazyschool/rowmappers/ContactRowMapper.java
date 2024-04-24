@@ -1,4 +1,4 @@
-package com.eazybytes.eazyschool;
+package com.eazybytes.eazyschool.rowmappers;
 
 import com.eazybytes.eazyschool.model.Contact;
 import org.springframework.jdbc.core.RowMapper;
