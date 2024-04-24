@@ -4,8 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
-public class Holiday {
+public class Holiday extends BaseEntity{
 
     private String day;
     private String reason;
