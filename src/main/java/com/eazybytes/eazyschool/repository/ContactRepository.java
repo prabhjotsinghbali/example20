@@ -25,7 +25,7 @@ public class ContactRepository {
 
     public int saveContactDetail(Contact contact)
     {
-        String sql = "INSERT INTO CONTACT_MSG (NAME,MOBILE_NO,EMAIL,SUBJECT,MESSAGE,STATUS,CREATED_AT,CREATED_BY) VALUES " +
+        String sql = "INSERT INTO CONTACT_MSG (NAME,MOBILE_NUM,EMAIL,SUBJECT,MESSAGE,STATUS,CREATED_AT,CREATED_BY) VALUES " +
                 "(?,?,?,?,?,?,?,?)";
         // return the number of records added (in this case 1);
         return jdbcTemplate.update(sql,contact.getName(),contact.getMobileNum(),
@@ -36,8 +36,7 @@ public class ContactRepository {
     public List<Contact> findMessagesWithOpenStatus(String status) {
 
         String sql = "SELECT * FROM CONTACT_MSG WHERE STATUS = ?";
-        String sql1 = "SELECT * FROM CONTACT_MSG";
-        return jdbcTemplate.query(sql1, new PreparedStatementSetter() {
+        return jdbcTemplate.query(sql, new PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement ps) throws SQLException {
                 ps.setString(1,status);
@@ -45,22 +44,15 @@ public class ContactRepository {
         },new ContactRowMapper());
     }
 
-    public List<Contact> findMessagesWithOpenStatus1(String status) {
-
-        String sql = "SELECT * FROM CONTACT_MSG WHERE STATUS = ?";
-        String sql1 = "select * from contact_msg";
-        return jdbcTemplate.query(sql1,new ContactRowMapper());
-    }
-
     public int closeMessageById(int id, String closed) {
 
-        String sql = "UPDATE CONTACT_MSG SET STATUS = ?, UPDATED_AT = ?, UPDATED_BY = ?, WHERE CONTACT_ID = ? ";
+        String sql = "UPDATE CONTACT_MSG SET STATUS = ?, UPDATED_BY = ?,UPDATED_AT =? WHERE CONTACT_ID = ?";
         return jdbcTemplate.update(sql, new PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement ps) throws SQLException {
                 ps.setString(1,closed);
-                ps.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
-                ps.setString(3,"Prabh");
+                ps.setString(2, "Prabh");
+                ps.setTimestamp(3,Timestamp.valueOf(LocalDateTime.now()));
                 ps.setInt(4,id);
             }
         });

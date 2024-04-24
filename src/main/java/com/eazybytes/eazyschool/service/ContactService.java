@@ -35,7 +35,7 @@ public class ContactService {
     }
 
     public List<Contact> findMessagesWithOpenStatus() {
-        return repository.findMessagesWithOpenStatus1(EazySchoolConstants.OPEN);
+        return repository.findMessagesWithOpenStatus(EazySchoolConstants.OPEN);
     }
 
     public boolean closeMessageById(int id) {

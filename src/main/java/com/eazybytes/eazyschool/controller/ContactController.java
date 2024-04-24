@@ -62,7 +62,7 @@ public class ContactController {
      return model;
     }
 
-    @GetMapping("/closeMsgs")
+    @GetMapping("/closeMsg")
     public String closeStatus(@RequestParam int id)
     {
         contactService.closeMessageById(id);
