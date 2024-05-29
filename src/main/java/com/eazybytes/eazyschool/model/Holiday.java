@@ -1,7 +1,6 @@
 package com.eazybytes.eazyschool.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
@@ -13,7 +12,7 @@ public class Holiday extends BaseEntity{
     private String day;
     private String reason;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING) // in db this is a varchar, so we have to tell JPA to convert this from enum to String type.
     private Type type;
 
     public enum Type{

@@ -10,13 +10,13 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Data
 @Entity
-@Table(name="contact_msg")
+@Table(name="contact_msg") // bcoz diff table name.
 public class Contact extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO,generator = "native")
+    @Id // primary ke
+    @GeneratedValue(strategy = GenerationType.AUTO,generator = "native") // automatically generated
     @GenericGenerator(name ="native",strategy = "native")
-    private int contactId;
+    private int contactId; // don't require @Coloumn annotation as coloumn name is same as in table.
 
     @NotBlank(message = "Name should not be blank")
     @Size(min=3, message = "Name must be atleast 3 characters long")

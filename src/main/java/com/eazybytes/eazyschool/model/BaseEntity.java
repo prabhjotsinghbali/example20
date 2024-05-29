@@ -6,7 +6,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-@MappedSuperclass
+@MappedSuperclass  // please create these coloumns in table for all the classes that extend this parent class.
 public class BaseEntity {
 
     private LocalDateTime createdAt;

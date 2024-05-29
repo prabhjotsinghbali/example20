@@ -4,11 +4,8 @@ import com.eazybytes.eazyschool.constants.EazySchoolConstants;
 import com.eazybytes.eazyschool.model.Contact;
 import com.eazybytes.eazyschool.repository.ContactRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import org.slf4j.Logger;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -35,9 +32,9 @@ public class ContactService {
         return isSaved;
     }
 
-    /*public List<Contact> findMessagesWithOpenStatus() {
-        return repository.findMessagesWithOpenStatus(EazySchoolConstants.OPEN);
-    }*/
+    public List<Contact> findMessagesWithOpenStatus() {
+        return repository.findByStatus(EazySchoolConstants.OPEN);
+    }
 
     public boolean closeMessageById(int id) {
 
